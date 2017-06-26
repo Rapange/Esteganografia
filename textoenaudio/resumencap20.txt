@@ -1,0 +1,19 @@
+-AES utiliza un tamaño de bloque de 128 bits.
+-Tamaño de clave 128,192,256.
+-El input es un bloque de 128 bits.
+-Es representado por una matriz cuadrada que será modificada en cada etapa de 	  encriptación/desencriptación, luego de la etapa final la matriz será copiada a una matriz de salida.
+- De manera simila rla llave de 128 buts es representada por una matriz cuadrada de bytes. Esta llave luego se expande en "key schedule words" son 44 palabras, en cada uno y cada palabra son 4 bytes.
+
+
+Se pueden difrerenciar 4 etapas:
+
+Substitute bytes: Se utiliza una tabla para encriptar S-box, y para desencriptar Inverse S-box.
+
+Shift rows: Permutar fila por fila.
+
+Mix columns: Sustitución que altera cada byte en una columna como una función de todos los bytes en la columna.
+
+Add Round Kye: un corrimiento simple XOR del bloque actual con una porcion de la llave expandida.
+
+RC4 es un algoritmo de cifrado stream, de tamaño de calve varible con operaciones orientadas a bytes. El algoritmo se basa en el uso de permutacion aleatoria.
+
