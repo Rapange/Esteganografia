@@ -92,36 +92,38 @@ def descifrarCanal(n, m, canalFinal, alpha):
 	return "no completado"
 	
 def cifrarImagen(nombreOriginal, nombreFinal, nuevoNombreFinal, alpha):
-	imagenOriginal = cv2.imread(nombreOriginal,cv2.IMREAD_COLOR)
+	imagenOriginal = cv2.imread(nombreOriginal,cv2.IMREAD_UNCHANGED)
 	m = len(imagenOriginal)
 	n = len(imagenOriginal[0])
 	
-	imagenFinal = cv2.imread(nombreFinal, cv2.IMREAD_COLOR)	
-	b,g,r = cv2.split(imagenOriginal)
-	bs,gs,rs = cv2.split(imagenFinal)
+	imagenFinal = cv2.imread(nombreFinal, cv2.IMREAD_UNCHANGED)	
+	b,g,r,alfa = cv2.split(imagenOriginal)
+	bs,gs,rs,alfas = cv2.split(imagenFinal)
 
 	bs = cifrarCanal(b,bs,alpha)
 	gs = cifrarCanal(g,gs,alpha)
 	rs = cifrarCanal(r,rs,alpha)
+	alfas = cifrarCanal(alfa,alfas,alpha)
 	
-	imagenFinal = cv2.merge((bs,gs,rs))
+	imagenFinal = cv2.merge((bs,gs,rs,alfas))
 	
 	cv2.imwrite(nuevoNombreFinal, imagenFinal)
 
 def descifrarImagen(n, m, nombreCifrado, nombreDescifrado, alpha):
 	
-	imagenCifrada = cv2.imread(nombreCifrado, cv2.IMREAD_COLOR)	
-	bs,gs,rs = cv2.split(imagenCifrada)
+	imagenCifrada = cv2.imread(nombreCifrado, cv2.IMREAD_UNCHANGED)	
+	bs,gs,rs,alfas = cv2.split(imagenCifrada)
 	
 	b = descifrarCanal(m,n,bs,8)
 	g = descifrarCanal(m,n,gs,8)
 	r = descifrarCanal(m,n,rs,8)
-
-	imagenDescifrada = cv2.merge((b,g,r))
+	alfa = descifrarCanal(m,n,alfas,8)
+	
+	imagenDescifrada = cv2.merge((b,g,r,alfa))
 	
 	cv2.imwrite(nombreDescifrado, imagenDescifrada)
 
 	
-cifrarImagen("test2.png", "suspicious2.png", "stegoimagen.png", 8)
-descifrarImagen(128,128, "stegoimagen.png", "peligro.png",8)
+#cifrarImagen("imagebattle.png", "suspicious2.png", "stegoimagebattle.png", 8)
+#descifrarImagen(466,466, "stegoimagebattle.png", "newimagebattle.png",8) #466,466 es el tamaño de imagebattle.png
 	
