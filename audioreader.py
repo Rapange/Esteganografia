@@ -6,11 +6,11 @@ import cv2
 def audiotoimage(filename):
 
     data, samplerate = sf.read(filename,dtype='int16')
-    print(len(data))
+    #print(len(data))
 
     #print(data[120000])
 
-    print(samplerate)
+   # print(samplerate)
 
     npdata =  np.array(data)
     npdatat  = npdata.transpose()
@@ -36,7 +36,7 @@ def audiotoimage(filename):
     if (square> int(square)):
         square = int(square) + 1
 
-    print(square)
+    #print(square)
 
 
 
@@ -77,11 +77,11 @@ def audiotoimage(filename):
 
 
     allchannel = np.transpose(allchannel)
-    print(allchannel)
+    #print(allchannel)
 
     cv2.imwrite("image.png", allchannel,[cv2.IMWRITE_PNG_COMPRESSION,9])
 
-    print("done2")
+    #print("done2")
 
 
 

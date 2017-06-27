@@ -53,7 +53,7 @@ def cifrarCanal(canalOriginal, canalFinal, alpha):
 					k = -1
 				lastFor = k+1
 				
-	print "NO"
+	#print "NO"
 	return "no completado"
 			
 def descifrarCanal(n, m, canalFinal, alpha):
@@ -88,7 +88,7 @@ def descifrarCanal(n, m, canalFinal, alpha):
 					currentI += 1
 					if currentI == n:
 						return canalOriginal	
-	print "NO"
+	#print "NO"
 	return "no completado"
 	
 def cifrarImagen(nombreOriginal, nombreFinal, nuevoNombreFinal, alpha):
